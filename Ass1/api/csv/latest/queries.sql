@@ -1,4 +1,4 @@
-use covid;
+
 CREATE TABLE case_time_series (
 	`index` BIGINT, 
 	`Date` TEXT, 
@@ -1176,7 +1176,6 @@ CREATE TABLE raw_data30 (
 	`Date Announced` TEXT, 
 	`Age Bracket` FLOAT(53), 
 	`Gender` TEXT, 
-	`Unnamed: 5` FLOAT(53), 
 	`Detected District` TEXT, 
 	`Detected State` TEXT, 
 	`State code` TEXT, 
@@ -1202,7 +1201,6 @@ CREATE TABLE raw_data31 (
 	`Date Announced` TEXT, 
 	`Age Bracket` FLOAT(53), 
 	`Gender` TEXT, 
-	`Unnamed: 5` FLOAT(53), 
 	`Detected District` TEXT, 
 	`Detected State` TEXT, 
 	`State code` TEXT, 
@@ -1228,7 +1226,6 @@ CREATE TABLE raw_data32 (
 	`Date Announced` TEXT, 
 	`Age Bracket` FLOAT(53), 
 	`Gender` TEXT, 
-	`Unnamed: 5` FLOAT(53), 
 	`Detected District` TEXT, 
 	`Detected State` TEXT, 
 	`State code` TEXT, 
@@ -1613,8 +1610,7 @@ CREATE TABLE travel_history (
 	`Type` TEXT, 
 	`Mode of Travel` TEXT, 
 	`PlaceName` TEXT, 
-	`DataSource` TEXT, 
-	`Unnamed: 11` FLOAT(53)
+	`DataSource` TEXT
 )
 
 ;

@@ -1,3 +1,5 @@
+
+
 mysql -u root -ppassword --local-infile=1 covid
 
 
@@ -39,6 +41,28 @@ ORDER BY recovery_rate DESC, death_rate ASC limit 1;
 
 ///
 
+SELECT `Date`, District, AVG(Value) AS avg_cases
+FROM district_testing_count
+WHERE Status = 'Positive'
+GROUP BY District
+HAVING AVG(Value) > (
+    SELECT AVG(Value)
+    FROM district_testing_count
+    WHERE Status = 'Positive'
+) AND `Date` < DATE_SUB(NOW(), INTERVAL 1 MONTH)
+ORDER BY avg_cases DESC
+LIMIT 10;
 
 
-
+///
+SELECT c.District, c.confirmed 
+FROM (SELECT State, MAX(confirmed) AS confirmed 
+      FROM state_wise 
+      WHERE State NOT IN ('State Unassigned', 'Total') 
+      GROUP BY state 
+      ORDER BY confirmed DESC 
+      LIMIT 10) s 
+JOIN district_wise c ON s.State = c.State 
+WHERE c.District != 'Unknown' 
+ORDER BY confirmed DESC 
+LIMIT 10;

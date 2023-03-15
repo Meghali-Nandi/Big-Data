@@ -17,7 +17,7 @@ for file in os.listdir(directory):
             quoted_header = ','.join([f'`{h}`' for h in header])
         
         # create the LOAD DATA INFILE statement
-        load_data_statement = f"LOAD DATA INFILE '{directory}{file}' INTO TABLE {table_name} FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS ({quoted_header});"
+        load_data_statement = f"LOAD LOCAL DATA INFILE '{directory}{file}' INTO TABLE {table_name} FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\\n' IGNORE 1 ROWS ({quoted_header});"
         
         # write the statement to a file
         with open('load_data.sql', 'a') as f:
