@@ -3,6 +3,7 @@ import time
 # connect to MongoDB
 client = MongoClient("mongodb://localhost:27017/")
 db = client["covid"]
+db.raw_data1.create_index("raw_data.agebracket")
 start_time = time.time()
 # execute query and store results
 results = db["raw_data1"].aggregate([
