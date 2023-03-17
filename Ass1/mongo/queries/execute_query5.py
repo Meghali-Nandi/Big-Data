@@ -1,9 +1,9 @@
 from pymongo import MongoClient
-
+import time
 # connect to MongoDB
 client = MongoClient("mongodb://localhost:27017/")
 db = client["covid"]
-
+start_time = time.time()
 # execute query and store results
 top_states = db.state_district_wise.aggregate([
     { "$project": { "states": { "$objectToArray": "$$ROOT" } } },
@@ -24,7 +24,8 @@ top_states = db.state_district_wise.aggregate([
 ]
 )
 
-
+end_time = time.time()
+print(end_time-start_time)
 
 # print results
 for result in top_states:

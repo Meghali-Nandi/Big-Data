@@ -1,11 +1,11 @@
 from pymongo import MongoClient
-
+import time
 # connect to MongoDB
 client = MongoClient("mongodb://localhost:27017/")
 db = client["covid"]
-
+start_time = time.time()
 # execute query and store results
-results = db["deaths_recoveries2"].aggregate([
+results = db["deaths_recoveries"].aggregate([
     {"$unwind": "$deaths_recoveries"},
     {"$group": {
         "_id": "$deaths_recoveries.state",
@@ -17,7 +17,8 @@ results = db["deaths_recoveries2"].aggregate([
     {"$sort": {"recovery_rate": -1, "death_rate": 1}},
     {"$limit": 1}
 ])
-
+end_time = time.time()
+print(end_time-start_time)
 # print results
 for result in results:
     print(result)

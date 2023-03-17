@@ -1,13 +1,12 @@
 from pymongo import MongoClient
-
+import time
 # connect to MongoDB
 client = MongoClient("mongodb://localhost:27017/")
 db = client["covid"]
-
+start_time = time.time()
 # execute query and store results
 results = db["raw_data1"].aggregate([
     {"$unwind": "$raw_data"},
-    # {"$match": {"raw_data.agebracket": {"$exists": True, "$type": "number"}}},
     {
         "$project": {
             "age_group": {
@@ -52,7 +51,8 @@ results = db["raw_data1"].aggregate([
     },
     {"$limit":1}
 ])
-
+end_time = time.time()
+print(end_time-start_time)
 # print results
 for result in results:
     print(result)
