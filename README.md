@@ -5,11 +5,11 @@ Consolidated query and output doc available at - Assignment1/Assignment1_output.
 Consolidated timesheet available at - Assignment1/time_comparison.xlsx  
 
 ### Mongo folder structure -
-    data - Consists the json files
+    data - Consists of the json files
     util - Consists of preprocessing and data-load scripts
     queries - Consists of the mongo db queries with and without index.
 
-### MySql folder structure -
+### MySQL folder structure -
     data - Consists of the csv files used
     util - Consists of preprocessing and data-load scripts
     queries - Consists of the MySQL db queries
