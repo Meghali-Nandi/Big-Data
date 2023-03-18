@@ -17,7 +17,7 @@ results = db.raw_data1.aggregate( [
                                           "as": "sc", 
                                           "in": {"state": "$$sc.state", 
                                                  "count": {"$multiply": [{"$divide": ["$$sc.count", "$total"]}, 100]}}}}}}
-]);
+])
 end_time = time.time()
 print(end_time-start_time)
 # print results
